@@ -11,7 +11,7 @@ const User = () => {
   useEffect(()=>{
 
     const fetchData = async()=>{
-        const response = await axios.get("http://localhost:8000/api/getall");
+        const response = await axios.get("https://crud-app-backend-gamma.vercel.app/api/getall");
         setUsers(response.data);
     }
 
@@ -20,7 +20,7 @@ const User = () => {
   },[])
 
   const deleteUser = async(userId) =>{
-      await axios.delete(`http://localhost:8000/api/delete/${userId}`)
+      await axios.delete(`https://crud-app-backend-gamma.vercel.app/api/delete/${userId}`)
       .then((respones)=>{
         setUsers((prevUser)=> prevUser.filter((user)=> user._id !== userId))
         toast.success(respones.data.msg, {position: 'top-right'})
